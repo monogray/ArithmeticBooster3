@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import com.example.arithmeticbooster3.game_core.EventEntity;
 import com.example.arithmeticbooster3.game_core.GameCore;
 import com.monogray.arithmetic_booster.R;
 
@@ -27,26 +28,29 @@ public class MGraphics extends SurfaceView implements SurfaceHolder.Callback {
 	  
 	private GameCore			game;
 	
-	private boolean				isTouch = false;
-	private int					newX = 50;
-	private int					newY = 50;
-	private int					diffX = 0;
-	private int					diffY = 0;
+	//private boolean				isTouch = false;
+	//private int					newX = -1;
+	//private int					newY = -1;
+	//private int					diffX = 0;
+	//private int					diffY = 0;
+	
+	//private EventEntity			eventsEntity;
 
 	public MGraphics(Context _context) {
 		super(_context);
 		holder = getHolder();
 		holder.addCallback(this);
+		
+		//eventsEntity = new EventEntity();
 	}
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
 			//isTouch = true;
-			newX = (int) event.getX();
-			newY = (int) event.getY();
-			//diffX = diffX - newX;
-			//diffY = diffY - newY;
+			//newX = (int) event.getX();
+			//newY = (int) event.getY();
+			EventEntity.touchProc((int) event.getX(), (int) event.getY());
 		}
 		return true;
 	}
@@ -54,7 +58,7 @@ public class MGraphics extends SurfaceView implements SurfaceHolder.Callback {
 	@Override
 	public void onDraw(Canvas canvas) {
 		if(canvas != null){
-			game.draw(canvas, isTouch, newX, newY, diffX, diffY);
+			game.draw(canvas);
 		}
 		//if(isTouch) isTouch = false;
 	}
@@ -66,10 +70,9 @@ public class MGraphics extends SurfaceView implements SurfaceHolder.Callback {
 	@Override
 	public void surfaceCreated(SurfaceHolder arg0) {
 		game = new GameCore();
-		game.setParams(metrics.widthPixels, metrics.heightPixels);
 		resourcesProcessing();
 		game.setBitmaps(bitmaps);
-		game.setup(getContext(), paint);
+		game.setup(getContext(), paint, metrics.widthPixels, metrics.heightPixels);
 
 		myThread = new MThread(holder, this);
 		// myThread.setFlag(true);
@@ -118,11 +121,11 @@ public class MGraphics extends SurfaceView implements SurfaceHolder.Callback {
 }
 
 class MThread extends Thread {
-	private boolean			flag;
+	//private boolean			flag;
 	private SurfaceHolder	myHolder;
 	private MGraphics		myDraw;
 	
-	private int		_i = 0;
+	//private int		_i = 0;
 	
 	public MThread(SurfaceHolder holder, MGraphics drawMain) {
 		myHolder = holder;
@@ -130,7 +133,7 @@ class MThread extends Thread {
 	}
 
 	public void setFlag(boolean _flag) {
-		flag = _flag;
+		//flag = _flag;
 	}
 
 	@Override
@@ -141,8 +144,8 @@ class MThread extends Thread {
 				canvas = myHolder.lockCanvas(null);
 				myDraw.onDraw(canvas);
 				
-				_i++;
-				System.out.println(_i);
+				//_i++;
+				//System.out.println(_i);
 			}finally {
 				if (canvas != null) 
 					myHolder.unlockCanvasAndPost(canvas);
