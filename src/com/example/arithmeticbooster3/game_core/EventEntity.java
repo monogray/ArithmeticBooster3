@@ -1,8 +1,11 @@
 package com.example.arithmeticbooster3.game_core;
 
-public class EventEntity{
-	private int					w = 0;
-	private int					h = 0;
+public class EventEntity {
+	// Screen properties
+	private static int			w = 0;
+	private static int			h = 0;
+	protected static int		wHalf = 0;
+	protected static int		hHalf = 0;
 	
 	// Touch properties
 	private static boolean		isTouch = false;
@@ -14,14 +17,17 @@ public class EventEntity{
 	public EventEntity() {
 	}
 	
-	public void setup(int _w, int _h) {
+	public static void setup(int _w, int _h) {
 		w = _w;
 		h = _h;
+		wHalf = w/2;
+		hHalf = h/2;
 	}
 	
-	public static void touchProc(int _newX, int _newY) {
-		if(_newX != touchX && _newY != touchY && touchX != -1)
-			isTouch = true;
+	public static void touchProc(boolean _isTouch, int _newX, int _newY) {
+		//if( (_newX != touchX || _newY != touchY) && touchX != -1 )
+			//isTouch = true;
+		isTouch = _isTouch;
 		touchX = _newX;
 		touchY = _newY;
 		diffTouchX = touchX - _newX;

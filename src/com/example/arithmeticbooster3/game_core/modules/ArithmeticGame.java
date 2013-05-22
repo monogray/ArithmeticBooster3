@@ -11,26 +11,8 @@ import com.example.arithmeticbooster3.libs.math.MMath;
 import android.content.Context;
 import android.graphics.*;
 
-public class ArithmeticGame{
-	private Context				context;
-	private Paint				paint;
-	private Map<String, Bitmap>	bitmaps = new HashMap<String, Bitmap>();
-	private Map<String, MButton>buttons = new HashMap<String, MButton>();
-	
-	private DataManipulator		dh;
-	
-	private int					w = 0;
-	private int					h = 0;
-	
-	// Touch properties
-	/*private boolean				isTouch = false;
-	private int					touchX = -1;
-	private int					touchY = -1;
-	private int					diffTouchX = 0;
-	private int					diffTouchY = 0;*/
-	
+public class ArithmeticGame extends ModulesCore{
 	// Game properties
-	private int					currentStage = 0;
 	private int					currentLevel = 3;
 	private float				borderLineY = 300;
 	private int					borderLineStep = 20;
@@ -46,22 +28,16 @@ public class ArithmeticGame{
 	public ArithmeticGame() {
 	}
 	
+	@Override
 	public void setup(Context _context, Paint _paint) {
-		context = _context;
-		paint = _paint;
-		
+		super.setup(_context, _paint);
 		setupBoobles();
 		setupButtons();
-		setupDataBase();
 	}
 	
-	public void setBitmaps(Map<String, Bitmap> _bitmaps) {
-		bitmaps = _bitmaps;
-	}
-	
+	@Override
 	public void setParams(int _w, int _h) {
-		w = _w;
-		h = _h;
+		super.setParams(_w, _h);
 		borderLineStep = h / 24;
 	}
 	
@@ -91,30 +67,10 @@ public class ArithmeticGame{
 		buttons.put("bt_4", new MButton());
 		buttons.get("bt_4").setParams((w-260)/5 * 4 + 65*3, h - 72, 65, 65, 1);
 	}
-	
-	private void setupDataBase() {
-		dh = new DataManipulator(context);
-	}
 
-	public void draw(Canvas canvas) {//, boolean _isTouch, int _newX, int _newY, int _diffX, int _diffY) {
-		touchProc();
+	public void draw(Canvas canvas) {
 		touchProcessing( onTouchEvent() );
-		
 		drawGraphic(canvas);
-	}
-	
-	private void touchProc() {//boolean _isTouch, int _newX, int _newY, int _diffX, int _diffY) {
-		//diffTouchX = touchX - _newX;
-		//diffTouchY = touchY - _newY;
-		/*if(_newX != touchX && _newY != touchY && touchX != -1)
-			isTouch = true;
-		touchX = _newX;
-		touchY = _newY;*/
-		/*isTouch = EventEntity.getIsTouch();
-		touchX = EventEntity.getTouchX();
-		touchY = EventEntity.getTouchY();
-		diffTouchX = EventEntity.getDiffTouchX();
-		diffTouchY = EventEntity.getDiffTouchY();*/
 	}
 	
 	private void touchProcessing(String _btName) {
@@ -145,21 +101,6 @@ public class ArithmeticGame{
 		}
 	}
 	
-	private String onTouchEvent() {
-		String _touchedBtName = "";
-		if(EventEntity.getIsTouch()){
-			Iterator<Entry<String, MButton>> it = buttons.entrySet().iterator();
-			while (it.hasNext()) {
-				Map.Entry<String, MButton> elem = (Map.Entry<String, MButton>) it.next();
-				if(elem.getValue().isClicked(EventEntity.getTouchX(), EventEntity.getTouchY(), currentStage)){
-					_touchedBtName = elem.getKey();
-				}	
-			}
-			EventEntity.setIsTouch(false);
-		}
-		return _touchedBtName;
-	}
-
 	private void drawGraphic(Canvas canvas) {
 		if(currentStage == 0)
 			drawGraphic_Stage_0(canvas);

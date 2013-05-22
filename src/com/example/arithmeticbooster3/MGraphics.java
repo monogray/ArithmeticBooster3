@@ -27,14 +27,6 @@ public class MGraphics extends SurfaceView implements SurfaceHolder.Callback {
 	private Map<String, Bitmap>	bitmaps = new HashMap<String, Bitmap>();
 	  
 	private GameCore			game;
-	
-	//private boolean				isTouch = false;
-	//private int					newX = -1;
-	//private int					newY = -1;
-	//private int					diffX = 0;
-	//private int					diffY = 0;
-	
-	//private EventEntity			eventsEntity;
 
 	public MGraphics(Context _context) {
 		super(_context);
@@ -47,10 +39,7 @@ public class MGraphics extends SurfaceView implements SurfaceHolder.Callback {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
-			//isTouch = true;
-			//newX = (int) event.getX();
-			//newY = (int) event.getY();
-			EventEntity.touchProc((int) event.getX(), (int) event.getY());
+			EventEntity.touchProc(true, (int) event.getX(), (int) event.getY());
 		}
 		return true;
 	}
@@ -60,7 +49,6 @@ public class MGraphics extends SurfaceView implements SurfaceHolder.Callback {
 		if(canvas != null){
 			game.draw(canvas);
 		}
-		//if(isTouch) isTouch = false;
 	}
 
 	@Override
@@ -132,9 +120,9 @@ class MThread extends Thread {
 		myDraw = drawMain;
 	}
 
-	public void setFlag(boolean _flag) {
+	//public void setFlag(boolean _flag) {
 		//flag = _flag;
-	}
+	//}
 
 	@Override
 	public void run() {
@@ -143,15 +131,14 @@ class MThread extends Thread {
 			try {
 				canvas = myHolder.lockCanvas(null);
 				myDraw.onDraw(canvas);
-				
 				//_i++;
 				//System.out.println(_i);
 			}finally {
 				if (canvas != null) 
 					myHolder.unlockCanvasAndPost(canvas);
-				else{
-					setFlag(false);
-				}
+				//else{
+					//setFlag(false);
+				//}
 			}
 		//}
 	}

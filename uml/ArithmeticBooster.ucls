@@ -3,7 +3,7 @@
   associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="com.example.arithmeticbooster3.MainActivity" project="ArithmeticBooster3" 
     file="/ArithmeticBooster3/src/com/example/arithmeticbooster3/MainActivity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position x="655" y="79" width="-1" height="-1"/>    
+    <position x="636" y="72" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -32,7 +32,7 @@
     project="ArithmeticBooster3" 
     file="/ArithmeticBooster3/src/com/example/arithmeticbooster3/game_core/DataManipulator.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position x="1142" y="435" width="-1" height="-1"/>    
+    <position x="1166" y="431" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -53,7 +53,7 @@
   <class id="6" language="java" name="com.example.arithmeticbooster3.game_core.GameCore" project="ArithmeticBooster3" 
     file="/ArithmeticBooster3/src/com/example/arithmeticbooster3/game_core/GameCore.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position x="890" y="876" width="-1" height="-1"/>    
+    <position x="946" y="833" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -63,7 +63,7 @@
   <class id="7" language="java" name="com.example.arithmeticbooster3.graphics.MButton" project="ArithmeticBooster3" 
     file="/ArithmeticBooster3/src/com/example/arithmeticbooster3/graphics/MButton.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position x="1256" y="1051" width="-1" height="-1"/>    
+    <position x="740" y="1451" width="-1" height="-1"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true"/>      
@@ -89,62 +89,54 @@
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="12">    
+  <dependency id="12">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="13">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="14">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="13" name="game"/>      
-      <multiplicity id="14" minimum="0" maximum="1"/>    
+      <attribute id="15" name="game"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="15">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="16" name="buttons"/>      
-      <multiplicity id="17" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="18">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="19" name="dh"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="21">    
+  <association id="17">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="22" name="myThread"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+      <attribute id="18" name="myThread"/>      
+      <multiplicity id="19" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="24">    
+  <nesting id="20">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="4"/>  
   </nesting>  
-  <association id="25">    
+  <association id="21">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="26" name="mDraw"/>      
-      <multiplicity id="27" minimum="0" maximum="1"/>    
+      <attribute id="22" name="mDraw"/>      
+      <multiplicity id="23" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="28">    
+  <association id="24">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="29" name="arithmeticGame"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
+      <attribute id="25" name="arithmeticGame"/>      
+      <multiplicity id="26" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="31">    
+  <association id="27">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="32" name="dh"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
+      <attribute id="28" name="dh"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
